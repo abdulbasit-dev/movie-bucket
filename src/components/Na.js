@@ -16,7 +16,7 @@ function Na(props) {
             <Nav className='mr-auto'>
               <Nav.Link href='#home'>Home</Nav.Link>
 
-              <GenresDropDown setMovies={props.setMovies} />
+              <GenresDropDown />
             </Nav>
             <SearchBox setMovies={props.setMovies} />
           </Navbar.Collapse>

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { MovieContext } from './MovieContext';
 import { Form, FormControl, Button, Spinner } from 'react-bootstrap';
 
-function SearchBox(props) {
+function SearchBox() {
+  const [movies, setMovies] = useContext(MovieContext);
   const [query, setQuery] = useState('');
   const [spinner, setSpinner] = useState('d-none');
   const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
@@ -19,7 +21,7 @@ function SearchBox(props) {
       .then(data => {
         setSpinner('d-block');
 
-        props.setMovies(data.results);
+        setMovies(data.results);
         setTimeout(() => {
           setSpinner('d-none');
         }, 400);

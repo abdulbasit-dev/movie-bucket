@@ -1,4 +1,5 @@
-import React, { useState, useEffect, PureComponent } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { MovieContext } from './MovieContext';
 import { Form } from 'react-bootstrap';
 
 const trending =
@@ -6,7 +7,8 @@ const trending =
 const popular =
   'https://api.themoviedb.org/3/movie/popular?api_key=754ad3989128c7d8cfcc82e6591e7f2e&language=en-US';
 
-function GenresDropDown({ setMovies }) {
+function GenresDropDown() {
+  const [movies, setMovies] = useContext(MovieContext);
   const [genres, setGenres] = useState([]);
   const [popuelerMovies, setPopuelerMovies] = useState([]);
 

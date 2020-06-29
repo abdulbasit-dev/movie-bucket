@@ -2,11 +2,11 @@ import React from 'react';
 import MovieGrid from './MovieGrid';
 import { Container } from 'react-bootstrap';
 
-function Main(props) {
+function Main() {
   return (
     <div>
       <Container>
-        <MovieGrid movies={props.movies} />
+        <MovieGrid />
       </Container>
     </div>
   );

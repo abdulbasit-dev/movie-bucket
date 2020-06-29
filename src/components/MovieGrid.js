@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import MovieCard from './MovieCard';
-import { Row, Col, Container } from 'react-bootstrap';
+import { MovieContext } from './MovieContext';
+import { Row, Col } from 'react-bootstrap';
 
-function MovieGrid(props) {
+function MovieGrid() {
+  const [movies, setMovies] = useContext(MovieContext);
   return (
     <div className='my-5'>
       <Row className='justify-content-between'>
-        {props.movies.map(movie => (
+        {movies.map(movie => (
           <Col md='4' className='my-3' lg='3' key={movie.id}>
             <MovieCard movie={movie} />
           </Col>

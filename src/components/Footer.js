@@ -1,10 +1,10 @@
 import React from 'react';
 import SearchBox from './SearchBox';
 
-function Footer(props) {
+function Footer() {
   return (
     <div className='bg-dark text-center p-4 fixed-bottom'>
-      <SearchBox setMovies={props.setMovies} />
+      <SearchBox />
     </div>
   );
 }
