@@ -3,7 +3,7 @@ import { MovieContext } from './MovieContext';
 import { Form, FormControl, Button, Spinner } from 'react-bootstrap';
 
 function SearchBox() {
-  const [movies, setMovies] = useContext(MovieContext);
+  const [, setMovies] = useContext(MovieContext);
   const [query, setQuery] = useState('');
   const [spinner, setSpinner] = useState('d-none');
   const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
@@ -37,7 +37,7 @@ function SearchBox() {
       <Form inline onSubmit={handleSubmit}>
         <FormControl type='text' onChange={handleChange} placeholder='Search' className='mr-sm-2' />
         <Button type='submit' variant='outline-info'>
-          {spinner == 'd-block' ? (
+          {spinner === 'd-block' ? (
             <Spinner animation='border' variant='info' className={spinner} />
           ) : (
             'Search'
