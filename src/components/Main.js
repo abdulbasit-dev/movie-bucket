@@ -19,10 +19,11 @@ function Main() {
             }}
           />
           <Route
-            path={`/movie/${curMovie.title}`}
-            render={() => {
-              return <MoviePage curMovie={curMovie} />
-            }}
+            path={'/movie/:id'}
+            // render={() => {
+            //   return <MoviePage curMovie={curMovie} />
+            // }}
+            component={MoviePage}
           />
         </Switch>
       </Container>

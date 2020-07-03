@@ -1,35 +1,35 @@
-import React, { useState, useContext } from 'react';
-import { MovieContext } from './MovieContext';
-import { Form, FormControl, Button, Spinner } from 'react-bootstrap';
+import React, {useState, useContext} from 'react'
+import {MovieContext} from './MovieContext'
+import {Form, FormControl, Button, Spinner} from 'react-bootstrap'
 
 function SearchBox() {
-  const [, setMovies] = useContext(MovieContext);
-  const [query, setQuery] = useState('');
-  const [spinner, setSpinner] = useState('d-none');
-  const TMDB_BASE_URL = 'https://api.themoviedb.org/3';
+  const [, setMovies] = useContext(MovieContext)
+  const [query, setQuery] = useState('')
+  const [spinner, setSpinner] = useState('d-none')
+  const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
 
   function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     const constructUrl = (path, query) => {
       return `${TMDB_BASE_URL}/${path}?api_key=${atob(
         'ZDJmYTdhZDFlMjZhZjA4NDdkMzQ5ZDdkYmQ1ZjkzZTU='
-      )}&query=${query}`;
-    };
+      )}&query=${query}`
+    }
 
     fetch(constructUrl('search/movie', query))
       .then(response => response.json())
       .then(data => {
-        setSpinner('d-block');
+        setSpinner('d-block')
 
-        setMovies(data.results);
+        setMovies(data.results)
         setTimeout(() => {
-          setSpinner('d-none');
-        }, 400);
-      });
+          setSpinner('d-none')
+        }, 400)
+      })
   }
 
   function handleChange(e) {
-    setQuery(e.target.value);
+    setQuery(e.target.value)
   }
 
   return (
@@ -45,7 +45,7 @@ function SearchBox() {
         </Button>
       </Form>
     </div>
-  );
+  )
 }
 
-export default SearchBox;
+export default SearchBox

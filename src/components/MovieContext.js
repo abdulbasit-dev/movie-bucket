@@ -1,11 +1,9 @@
-import React, { useState, createContext } from 'react';
+import React, {useState, createContext} from 'react'
 
-export const MovieContext = createContext();
+export const MovieContext = createContext()
 
 export function MoiveProvider(props) {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([])
 
-  return (
-    <MovieContext.Provider value={[movies, setMovies]}>{props.children}</MovieContext.Provider>
-  );
+  return <MovieContext.Provider value={[movies, setMovies]}>{props.children}</MovieContext.Provider>
 }

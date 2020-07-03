@@ -7,11 +7,9 @@ function MovieGrid(props) {
   const [movies] = useContext(MovieContext)
   return (
     <div className='my-5'>
-      <Row className='justify-content-between'>
+      <Row className='justify-content-center'>
         {movies.map(movie => (
-          <Col md='4' className='my-3' lg='3' key={movie.id}>
-            <MovieCard movie={movie} setCurMovie={props.setCurMovie} />
-          </Col>
+          <MovieCard movie={movie} setCurMovie={props.setCurMovie} />
         ))}
       </Row>
     </div>

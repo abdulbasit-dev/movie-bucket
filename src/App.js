@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <MoiveProvider>
-        <div className='App'>
+        <div className=''>
           <Na />
           <Main />
           <Footer />

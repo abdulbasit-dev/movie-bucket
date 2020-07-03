@@ -1,10 +1,79 @@
-.App {
-  text-align: center;
+* {
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
+}
+
+img {
+  pointer-events: none;
+}
+.movie_card {
+  padding: 0 !important;
+  width: 15rem;
+  margin: 14px;
+  border-radius: 10px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+.movie_card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 18rem;
+}
+.movie_info {
+  color: #5e5c5c;
+}
+
+.movie_info i {
+  font-size: 20px;
+}
+.card-title {
+  width: 80%;
+  height: 4rem;
+}
+.play_button {
+  background-color: #ff3d49;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  right: 7px;
+  bottom: 112px;
+  font-size: 24px;
+  padding-left: 18px;
+  padding-top: 15px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.credits {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 2px solid #8e24aa;
+  font-size: 18px;
+}
+.credits .card-body {
+  padding: 0;
+}
+.credits p {
+  padding-top: 15px;
+  padding-left: 18px;
+}
+.credits .card-body i {
+  color: #8e24aa;
 }
 
 .App-logo {
   height: 8vmin;
   pointer-events: none;
+}
+
+a {
+  color: #5e5c5c;
+  text-decoration: none;
+}
+a:hover {
+  color: #5e5c5c;
+  text-decoration: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -35,4 +104,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.border-10 {
+  border: 4px solid rgba(22, 21, 21, 0.253);
+  border-radius: 10px;
 }
