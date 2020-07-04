@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react'
 import {MovieContext} from './MovieContext'
 import {Form, FormControl, Button, Spinner} from 'react-bootstrap'
 
-function SearchBox() {
+function SearchBox(props) {
   const [, setMovies] = useContext(MovieContext)
   const [query, setQuery] = useState('')
   const [spinner, setSpinner] = useState('d-none')
@@ -33,7 +33,7 @@ function SearchBox() {
   }
 
   return (
-    <div>
+    <div className={props.searchShow}>
       <Form inline onSubmit={handleSubmit}>
         <FormControl type='text' onChange={handleChange} placeholder='Search' className='mr-sm-2' />
         <Button type='submit' variant='outline-info'>

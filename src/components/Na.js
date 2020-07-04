@@ -3,9 +3,11 @@ import SearchBox from './SearchBox'
 import GenresDropDown from './GenresDropDown'
 import logo from '../logo.svg'
 import {Navbar, Nav, Container} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 
-function Na(props) {
+function Na() {
+  const location = useLocation()
+
   return (
     <div>
       <Navbar bg='dark' variant='dark' expand='lg'>
@@ -19,9 +21,9 @@ function Na(props) {
             <Nav className='mr-auto'>
               <Nav.Link href='#home'>Home</Nav.Link>
 
-              <GenresDropDown />
+              {location.pathname === '/' ? <GenresDropDown /> : ''}
             </Nav>
-            <SearchBox setMovies={props.setMovies} />
+            {location.pathname === '/' ? <SearchBox /> : ''}
           </Navbar.Collapse>
         </Container>
       </Navbar>

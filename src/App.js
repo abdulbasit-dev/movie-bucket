@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Na from './components/Na'
 import Main from './components/Main'
@@ -8,6 +8,7 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import './App.css'
 
 function App() {
+  const [searchShow, setSearchShow] = useState('d-block')
   return (
     <Router>
       <MoiveProvider>

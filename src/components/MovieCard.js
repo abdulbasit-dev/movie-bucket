@@ -1,21 +1,19 @@
 import React from 'react'
-import {Card, Button, Overlay, OverlayTrigger, Tooltip} from 'react-bootstrap'
+
 import {Link} from 'react-router-dom'
 
 function MovieCard(props) {
-  console.log(props)
-
   return (
     <div>
       {
-        <Link to={`/movie/${props.movie.id}`}>
-          <div class='card movie_card'>
+        <Link to={`/search/${props.movie.id}`}>
+          <div className='card movie_card'>
             <img
               src={'https://image.tmdb.org/t/p/w300' + props.movie.poster_path}
-              class='card-img-top'
+              className='card-img-top'
               alt='...'
             />
-            <div class='card-body'>
+            <div className='card-body'>
               <i
                 className='fas fa-play play_button'
                 data-toggle='tooltip'
@@ -23,10 +21,10 @@ function MovieCard(props) {
                 title='Play Trailer'
               ></i>
 
-              <h5 class='card-title'>{props.movie.original_title}</h5>
-              <span class='movie_info'>{props.movie.release_date}</span>
-              <span class='movie_info float-right'>
-                <i class='fas fa-star'></i> {props.movie.vote_average} / 10
+              <h5 className='card-title'>{props.movie.original_title}</h5>
+              <span className='movie_info'>{props.movie.release_date}</span>
+              <span className='movie_info float-right'>
+                <i className='fas fa-star'></i> {props.movie.vote_average} / 10
               </span>
             </div>
           </div>

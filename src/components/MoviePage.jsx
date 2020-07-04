@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
-import {Row, Col, ResponsiveEmbed} from 'react-bootstrap'
+import {Link, useHistory} from 'react-router-dom'
+import {Row, Col, ResponsiveEmbed, Button} from 'react-bootstrap'
+import {useParams} from 'react-router-dom'
 
-export default function MoviePage({match}) {
-  // console.log(match.params.title.replace(/-/g, ' '))
-  // console.log(match.params.id)
+export default function MoviePage() {
+  const {id} = useParams()
+  const history = useHistory()
+
   const [movie, setMovie] = useState(null)
   const [video, setVideo] = useState('')
+  const [casts, setCasts] = useState(null)
+  // setSearchShow('d-none')
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${match.params.id}?api_key=754ad3989128c7d8cfcc82e6591e7f2e&language=en-US`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=754ad3989128c7d8cfcc82e6591e7f2e&language=en-US`
     )
       .then(res => res.json())
       .then(data => {
@@ -17,17 +21,30 @@ export default function MoviePage({match}) {
       })
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${match.params.id}/videos?api_key=754ad3989128c7d8cfcc82e6591e7f2e&language=en-US`
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=754ad3989128c7d8cfcc82e6591e7f2e&language=en-US`
     )
       .then(res => res.json())
       .then(data => {
-        console.log(data.results[0])
+        // console.log(data.results[0])
         setVideo(data.results[0])
+      })
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=754ad3989128c7d8cfcc82e6591e7f2e&language=en-US`
+    )
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setCasts(data.cast)
       })
   }, [])
 
+  function handleBack() {
+    history.goBack()
+  }
+
   return (
     <div className=''>
+      <Button onClick={handleBack}>Go Back</Button>
       {movie && (
         <Row className='my-5'>
           <Col md='4' className='border border-danger'>
@@ -42,6 +59,7 @@ export default function MoviePage({match}) {
           </Col>
         </Row>
       )}
+      {movie && JSON.stringify(movie.genres)}
 
       <div className='my-4'>
         <ResponsiveEmbed aspectRatio='21by9'>
@@ -53,6 +71,7 @@ export default function MoviePage({match}) {
           ></iframe>
         </ResponsiveEmbed>
       </div>
+      {/* <div className='my-4'>{casts && casts.map(cast => <h1>{cast.name}</h1>)}</div> */}
     </div>
   )
 }

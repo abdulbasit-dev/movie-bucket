@@ -6,7 +6,6 @@ import MovieGrid from './MovieGrid'
 import MoviePage from './MoviePage'
 
 function Main() {
-  const [curMovie, setCurMovie] = useState({})
   return (
     <div>
       <Container>
@@ -15,16 +14,10 @@ function Main() {
             path='/'
             exact
             render={() => {
-              return <MovieGrid setCurMovie={setCurMovie} />
+              return <MovieGrid />
             }}
           />
-          <Route
-            path={'/movie/:id'}
-            // render={() => {
-            //   return <MoviePage curMovie={curMovie} />
-            // }}
-            component={MoviePage}
-          />
+          <Route path={'/search/:id'} component={() => <MoviePage />} />
         </Switch>
       </Container>
     </div>
