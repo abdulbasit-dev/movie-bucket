@@ -4,6 +4,7 @@ import {Container} from 'react-bootstrap'
 import {Route, Switch} from 'react-router-dom'
 import MovieGrid from './MovieGrid'
 import MoviePage from './MoviePage'
+import Search from './Search'
 
 function Main() {
   return (
@@ -17,7 +18,8 @@ function Main() {
               return <MovieGrid />
             }}
           />
-          <Route path={'/search/:id'} component={() => <MoviePage />} />
+          <Route path={'/movie/:id'} component={() => <MoviePage />} />
+          <Route path={'/search'} component={() => <Search />} />
         </Switch>
       </Container>
     </div>

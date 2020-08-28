@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import {Row, Col, ResponsiveEmbed, Button} from 'react-bootstrap'
 import {useParams} from 'react-router-dom'
+import Carousel, {Dots} from '@brainhubeu/react-carousel'
+import '@brainhubeu/react-carousel/lib/style.css'
 
 export default function MoviePage() {
   const {id} = useParams()
@@ -10,7 +12,6 @@ export default function MoviePage() {
   const [movie, setMovie] = useState(null)
   const [video, setVideo] = useState('')
   const [casts, setCasts] = useState(null)
-  // setSearchShow('d-none')
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=754ad3989128c7d8cfcc82e6591e7f2e&language=en-US`
@@ -25,7 +26,6 @@ export default function MoviePage() {
     )
       .then(res => res.json())
       .then(data => {
-        // console.log(data.results[0])
         setVideo(data.results[0])
       })
     fetch(
@@ -33,7 +33,6 @@ export default function MoviePage() {
     )
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setCasts(data.cast)
       })
   }, [])
@@ -71,7 +70,41 @@ export default function MoviePage() {
           ></iframe>
         </ResponsiveEmbed>
       </div>
-      {/* <div className='my-4'>{casts && casts.map(cast => <h1>{cast.name}</h1>)}</div> */}
+      <div className='my-4'></div>
+
+      <Carousel
+        slidesPerPage={5}
+        arrows
+        breakpoints={{
+          640: {
+            slidesPerPage: 1,
+            arrows: false,
+          },
+          900: {
+            slidesPerPage: 2,
+            arrows: false,
+          },
+        }}
+      >
+        {casts &&
+          casts.map(cast => (
+            <img
+              className='img-fluid p-3'
+              key={cast.credit_id}
+              src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`}
+            />
+          ))}
+      </Carousel>
     </div>
   )
+}
+
+{
+  /* <Link to={`movie/cast`} key={cast.credit_id}>
+<img
+  className='img-fluid p-3'
+  src={`https://image.tmdb.org/t/p/w300${cast.profile_path}`}
+/>
+<p>{cast.character}</p>
+</Link> */
 }

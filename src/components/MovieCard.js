@@ -1,12 +1,11 @@
 import React from 'react'
-
 import {Link} from 'react-router-dom'
 
 function MovieCard(props) {
   return (
     <div>
       {
-        <Link to={`/search/${props.movie.id}`}>
+        <Link to={`/movie/${props.movie.id}`}>
           <div className='card movie_card'>
             <img
               src={'https://image.tmdb.org/t/p/w300' + props.movie.poster_path}

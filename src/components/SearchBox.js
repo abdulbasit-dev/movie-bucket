@@ -1,31 +1,16 @@
 import React, {useState, useContext} from 'react'
-import {MovieContext} from './MovieContext'
 import {Form, FormControl, Button, Spinner} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 function SearchBox(props) {
-  const [, setMovies] = useContext(MovieContext)
   const [query, setQuery] = useState('')
   const [spinner, setSpinner] = useState('d-none')
-  const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
+  const [searchText, setSearchText] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
-    const constructUrl = (path, query) => {
-      return `${TMDB_BASE_URL}/${path}?api_key=${atob(
-        'ZDJmYTdhZDFlMjZhZjA4NDdkMzQ5ZDdkYmQ1ZjkzZTU='
-      )}&query=${query}`
-    }
-
-    fetch(constructUrl('search/movie', query))
-      .then(response => response.json())
-      .then(data => {
-        setSpinner('d-block')
-
-        setMovies(data.results)
-        setTimeout(() => {
-          setSpinner('d-none')
-        }, 400)
-      })
+    // setSearchText(query)
+    // console.log(searchText)
   }
 
   function handleChange(e) {
@@ -36,13 +21,15 @@ function SearchBox(props) {
     <div className={props.searchShow}>
       <Form inline onSubmit={handleSubmit}>
         <FormControl type='text' onChange={handleChange} placeholder='Search' className='mr-sm-2' />
-        <Button type='submit' variant='outline-info'>
-          {spinner === 'd-block' ? (
-            <Spinner animation='border' variant='info' className={spinner} />
-          ) : (
-            'Search'
-          )}
-        </Button>
+        <Link to={`/search?query=${query}`}>
+          <Button type='submit' variant='outline-info'>
+            {spinner === 'd-block' ? (
+              <Spinner animation='border' variant='info' className={'d-block'} />
+            ) : (
+              'Search'
+            )}
+          </Button>
+        </Link>
       </Form>
     </div>
   )
